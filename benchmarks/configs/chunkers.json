@@ -1,0 +1,103 @@
+{
+  "_comment": "Three axes on one scale: index build seed, chunker choice, chunker seed.",
+  "corpus": "data/corpus.jsonl",
+  "corpus_sizes": [
+    14
+  ],
+  "k": 10,
+  "seed": 42,
+  "timing_repeats": 3,
+  "embedder": {
+    "name": "hash",
+    "dimension": 384
+  },
+  "queries": [
+    "what analytical method was applied",
+    "how many participants took part",
+    "what were the reported effect sizes",
+    "which reliability measures were used"
+  ],
+  "chunkers": [
+    {
+      "name": "tei-section",
+      "params": {
+        "max_words": 120
+      }
+    },
+    {
+      "name": "sentence",
+      "params": {
+        "max_words": 120
+      }
+    },
+    {
+      "name": "paragraph"
+    },
+    {
+      "name": "recursive",
+      "params": {
+        "chunk_size": 800,
+        "overlap": 150
+      }
+    },
+    {
+      "name": "sliding-sentence",
+      "params": {
+        "window": 3,
+        "stride": 1
+      }
+    },
+    {
+      "name": "semantic",
+      "params": {
+        "percentile": 90,
+        "jitter": 0.0
+      }
+    },
+    {
+      "name": "semantic",
+      "params": {
+        "percentile": 90,
+        "jitter": 0.01
+      },
+      "seeds": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ]
+    },
+    {
+      "name": "semantic",
+      "params": {
+        "percentile": 90,
+        "jitter": 0.05
+      },
+      "seeds": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ]
+    }
+  ],
+  "backends": [
+    {
+      "name": "lsh",
+      "params": {
+        "n_bits": 6,
+        "n_tables": 4
+      },
+      "seeds": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ]
+    }
+  ],
+  "_power": "PILOT query set. For the paper: >=89 queries (d=0.3) or >=34 (d=0.5); see the power simulation."
+}

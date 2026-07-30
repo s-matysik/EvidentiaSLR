@@ -1,0 +1,16 @@
+{
+  "corpus": "data/corpus.jsonl",
+  "corpus_sizes": [1000, 10000],
+  "k": 20,
+  "seed": 42,
+  "timing_repeats": 3,
+  "chunker": "record",
+  "embedder": { "name": "hash", "dimension": 256 },
+  "queries": [
+    "approximate nearest neighbour search recall guarantees",
+    "systematic review screening automation and prisma"
+  ],
+  "backends": [
+    { "name": "lsh", "params": { "n_bits": 12, "n_tables": 3 }, "seeds": [1,2,3,4,5] }
+  ]
+}

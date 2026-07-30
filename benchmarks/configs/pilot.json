@@ -1,0 +1,37 @@
+{
+  "corpus": "data/corpus.jsonl",
+  "corpus_sizes": [1000, 10000, 100000],
+  "k": 20,
+  "seed": 42,
+  "timing_repeats": 5,
+  "chunker": "record",
+  "embedder": { "name": "hash", "dimension": 384 },
+  "queries": [
+    "effect of automated screening on systematic review recall",
+    "deep learning applied to electroencephalography signals",
+    "approximate nearest neighbour search recall guarantees",
+    "reproducibility of retrieval augmented generation pipelines"
+  ],
+  "backends": [
+    {
+      "name": "lsh",
+      "params": { "n_bits": 12, "n_tables": 4 },
+      "seeds": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+    },
+    {
+      "name": "faiss-hnsw",
+      "params": { "m": 32, "ef_construction": 200, "ef_search": 64, "threads": 1 },
+      "seeds": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+    },
+    {
+      "name": "faiss-hnsw",
+      "params": { "m": 16, "ef_construction": 100, "ef_search": 32, "threads": 8 },
+      "seeds": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+    },
+    {
+      "name": "faiss-ivfpq",
+      "params": { "nlist": 256, "m": 8, "nbits": 8, "nprobe": 8, "threads": 1 },
+      "seeds": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+# Drop-in service for LitRev's docker-compose.yml.
+#
+# Sits next to the existing `extractor` service and follows the same
+# conventions: build context under the core-backend root, /health endpoint,
+# joined to the `laravel` network. Nothing else in the compose file changes.
+#
+# Thread counts are pinned to 1 on purpose. Multi-threaded BLAS and
+# multi-threaded index construction are two of the sources of run-to-run
+# variation this project exists to eliminate; leaving them unpinned would
+# make the container's own output unreproducible.
+
+services:
+  evidentia:
+    build:
+      context: ${CORE_BACKEND_ROOT:-/share/Container/app/LitRev-core-backend}/services/evidentia
+      dockerfile: docker/Dockerfile
+    container_name: litrev_evidentia
+    restart: unless-stopped
+    environment:
+      OMP_NUM_THREADS: "1"
+      OPENBLAS_NUM_THREADS: "1"
+      MKL_NUM_THREADS: "1"
+      EVIDENTIA_SEED: "42"
+      LITREV_URL: "http://litrev_nginx"
+      HF_HOME: "/models"
+    volumes:
+      - evidentia_models:/models
+    networks:
+      - laravel
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request;urllib.request.urlopen('http://localhost:8000/health')"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+
+volumes:
+  evidentia_models:

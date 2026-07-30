@@ -1,0 +1,23 @@
+cff-version: 1.2.0
+title: "Evidentia: reproducible retrieval for literature analysis"
+message: "If you use this software, please cite it using these metadata."
+type: software
+version: 1.0.0
+license: MIT
+repository-code: "https://github.com/s-matysik/evidentia"
+abstract: >-
+  Evidentia measures and certifies the effect of vector-index choice on the
+  evidence sets used in retrieval-augmented literature analysis. It provides a
+  deterministic retrieval pipeline, three reproducibility metrics (Evidence Set
+  Fidelity, Evidence Set Stability, Synthesis Divergence) and verifiable
+  evidence certificates.
+keywords:
+  - systematic review
+  - retrieval augmented generation
+  - vector database
+  - reproducibility
+  - information retrieval
+authors:
+  - given-names: Sebastian
+    family-names: Matysik
+    affiliation: "University of Szczecin"
