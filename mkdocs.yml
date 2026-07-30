@@ -1,0 +1,15 @@
+site_name: Evidentia
+site_url: https://s-matysik.github.io/evidentia/
+repo_url: https://github.com/s-matysik/evidentia
+theme:
+  name: material
+  palette:
+    primary: blue grey
+nav:
+  - Overview: index.md
+  - Contributing: contributing.md
+markdown_extensions:
+  - admonition
+  - pymdownx.superfences
+  - toc:
+      permalink: true
