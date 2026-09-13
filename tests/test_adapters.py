@@ -16,9 +16,9 @@ import types
 import numpy as np
 import pytest
 
-from evidentia.exceptions import BackendUnavailableError
-from evidentia.litrev import LitRevClient
-from evidentia.synth import LexicalOverlapGrounding
+from evidentiaslr.exceptions import BackendUnavailableError
+from evidentiaslr.litrev import LitRevClient
+from evidentiaslr.synth import LexicalOverlapGrounding
 
 from .helpers import TEI_SAMPLE
 
@@ -58,7 +58,7 @@ def fake_sbert(monkeypatch):
     module.__version__ = "9.9.9"
     monkeypatch.setitem(sys.modules, "sentence_transformers", module)
     _StubSentenceTransformer.instances.clear()
-    from evidentia.embed import SentenceTransformerEmbedder
+    from evidentiaslr.embed import SentenceTransformerEmbedder
 
     return SentenceTransformerEmbedder
 
@@ -128,7 +128,7 @@ def fake_openai(monkeypatch):
     module.OpenAI = _Client
     monkeypatch.setitem(sys.modules, "openai", module)
     monkeypatch.setenv("OPENAI_API_KEY", "test-key")
-    from evidentia.embed import OpenAIEmbedder
+    from evidentiaslr.embed import OpenAIEmbedder
 
     return OpenAIEmbedder
 
@@ -207,7 +207,7 @@ def fake_nli(monkeypatch):
     module.AutoTokenizer = _Tokenizer
     module.AutoModelForSequenceClassification = _Model
     monkeypatch.setitem(sys.modules, "transformers", module)
-    from evidentia.synth import NLIGrounding
+    from evidentiaslr.synth import NLIGrounding
 
     return NLIGrounding
 
@@ -368,7 +368,7 @@ def fake_grobid_http(monkeypatch):
 
 
 def test_grobid_client_reports_liveness(fake_grobid_http, tmp_path):
-    from evidentia.io.pdf import GrobidClient
+    from evidentiaslr.io.pdf import GrobidClient
 
     client = GrobidClient(tei_cache=tmp_path / "tei")
     assert client.alive() is True
@@ -379,7 +379,7 @@ def test_grobid_client_reports_liveness(fake_grobid_http, tmp_path):
 
 def test_grobid_client_sends_litrev_compatible_parameters(fake_grobid_http, tmp_path):
     """TEI produced here and by LitRev's extractor must be interchangeable."""
-    from evidentia.io.pdf import GrobidClient
+    from evidentiaslr.io.pdf import GrobidClient
 
     pdf = tmp_path / "paper.pdf"
     pdf.write_bytes(b"%PDF-1.4\n%%EOF\n")
@@ -396,7 +396,7 @@ def test_grobid_client_sends_litrev_compatible_parameters(fake_grobid_http, tmp_
 
 
 def test_grobid_client_serves_the_second_call_from_cache(fake_grobid_http, tmp_path):
-    from evidentia.io.pdf import GrobidClient
+    from evidentiaslr.io.pdf import GrobidClient
 
     pdf = tmp_path / "paper.pdf"
     pdf.write_bytes(b"%PDF-1.4\n%%EOF\n")
@@ -410,7 +410,7 @@ def test_grobid_client_serves_the_second_call_from_cache(fake_grobid_http, tmp_p
 
 
 def test_grobid_cache_key_follows_content_not_name(fake_grobid_http, tmp_path):
-    from evidentia.io.pdf import GrobidClient
+    from evidentiaslr.io.pdf import GrobidClient
 
     client = GrobidClient(tei_cache=tmp_path / "tei")
     first = tmp_path / "a.pdf"
@@ -443,7 +443,7 @@ def test_missing_httpx_is_reported_as_a_backend_error(monkeypatch, tmp_path):
     monkeypatch.setattr(builtins, "__import__", fake_import)
     monkeypatch.delitem(sys.modules, "httpx", raising=False)
 
-    from evidentia.io.pdf import GrobidClient
+    from evidentiaslr.io.pdf import GrobidClient
 
     pdf = tmp_path / "paper.pdf"
     pdf.write_bytes(b"%PDF-1.4\n%%EOF\n")

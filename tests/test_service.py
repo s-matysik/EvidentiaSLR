@@ -9,11 +9,11 @@ from __future__ import annotations
 
 import pytest
 
-pytest.importorskip("fastapi", reason="install evidentia[service]")
+pytest.importorskip("fastapi", reason="install evidentiaslr[service]")
 
 from fastapi.testclient import TestClient  # noqa: E402
 
-from evidentia.service import app  # noqa: E402
+from evidentiaslr.service import app  # noqa: E402
 
 from .helpers import TEI_SAMPLE as TEI_FOR_SERVICE  # noqa: E402
 

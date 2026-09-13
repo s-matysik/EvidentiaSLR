@@ -7,7 +7,7 @@ from pathlib import Path
 
 import pytest
 
-from evidentia import Corpus, Record
+from evidentiaslr import Corpus, Record
 
 SCRIPT = Path(__file__).resolve().parents[1] / "examples" / "case_study.py"
 

@@ -10,7 +10,7 @@ from __future__ import annotations
 
 import pytest
 
-from evidentia import Corpus, HashEmbedder, Record
+from evidentiaslr import Corpus, HashEmbedder, Record
 
 from .helpers import TEI_SAMPLE
 

@@ -1,7 +1,7 @@
 """Evidence certificates.
 
 A certificate records everything needed to re-derive an evidence set, plus a
-digest of the evidence set itself. A reviewer runs `evidentia verify` and gets
+digest of the evidence set itself. A reviewer runs `evidentiaslr verify` and gets
 a binary answer: either the pipeline reproduces the reported evidence, or it
 does not and the certificate says exactly which component drifted.
 

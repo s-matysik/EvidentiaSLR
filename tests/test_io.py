@@ -2,8 +2,8 @@
 
 import pytest
 
-from evidentia.exceptions import CorpusError, UnknownBackendError
-from evidentia.io import load_corpus, load_scopus_csv, parse_bibtex, parse_ris
+from evidentiaslr.exceptions import CorpusError, UnknownBackendError
+from evidentiaslr.io import load_corpus, load_scopus_csv, parse_bibtex, parse_ris
 
 SCOPUS_CSV = (
     "Authors,Title,Year,Source title,DOI,Abstract,Author Keywords,Document Type,Cited by,EID\n"

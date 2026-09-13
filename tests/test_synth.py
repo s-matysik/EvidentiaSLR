@@ -1,6 +1,6 @@
 """Claim extraction and grounding."""
 
-from evidentia.synth import LexicalOverlapGrounding, attribute_claims, extract_claims
+from evidentiaslr.synth import LexicalOverlapGrounding, attribute_claims, extract_claims
 
 
 def test_extract_claims_drops_questions_and_short_fragments():

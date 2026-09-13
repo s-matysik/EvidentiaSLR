@@ -1,6 +1,6 @@
 """LitRev integration.
 
-Evidentia plugs into LitRev at the point where its pipeline currently stops.
+EvidentiaSLR plugs into LitRev at the point where its pipeline currently stops.
 LitRev already ingests PDFs into `folder_items`, extracts them through GROBID
 in the `extractor` service and stores TEI in
 `review_source_files.extracted_metadata->tei`. Everything after that — the
@@ -19,7 +19,7 @@ Two entry points:
     testable without a running LitRev instance.
 
 The recommended deployment mirrors `extractor`: a sibling container exposing
-`evidentia.service:app`, with a Laravel job posting to it exactly as
+`evidentiaslr.service:app`, with a Laravel job posting to it exactly as
 `ExtractReviewSourceFileJob` posts to the extractor today.
 """
 

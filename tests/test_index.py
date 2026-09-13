@@ -3,14 +3,14 @@
 import numpy as np
 import pytest
 
-from evidentia import FlatIndex, RandomProjectionLSH, Retriever, build_index
-from evidentia.exceptions import (
+from evidentiaslr import FlatIndex, RandomProjectionLSH, Retriever, build_index
+from evidentiaslr.exceptions import (
     BackendUnavailableError,
     ConfigurationError,
     PipelineStateError,
     UnknownBackendError,
 )
-from evidentia.index import EXACT_BACKENDS, INDEX_REGISTRY
+from evidentiaslr.index import EXACT_BACKENDS, INDEX_REGISTRY
 
 
 def test_flat_index_is_exact_and_ties_break_on_id():

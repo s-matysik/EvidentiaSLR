@@ -6,7 +6,7 @@ approximate one, closing the chain from index approximation to scientific
 conclusion.
 
 `grounding_fn` must be deterministic. The default implementation in
-`evidentia.synth` uses an NLI model with pinned weights and rounded logits
+`evidentiaslr.synth` uses an NLI model with pinned weights and rounded logits
 rather than a generative model, so the metric is itself reproducible — a
 divergence measure that varies between runs measures nothing.
 """

@@ -27,10 +27,10 @@ import statistics
 import time
 from pathlib import Path
 
-from evidentia import Corpus, FlatIndex, HashEmbedder, Retriever, build_index
-from evidentia.chunking import build_chunker
-from evidentia.determinism import DeterminismConfig, enforce
-from evidentia.metrics import (
+from evidentiaslr import Corpus, FlatIndex, HashEmbedder, Retriever, build_index
+from evidentiaslr.chunking import build_chunker
+from evidentiaslr.determinism import DeterminismConfig, enforce
+from evidentiaslr.metrics import (
     bootstrap_ci,
     crossover_analysis,
     evidence_set_fidelity,
@@ -48,7 +48,7 @@ def load_embedder(spec: dict):
     params = {key: value for key, value in spec.items() if key != "name"}
     if name == "hash":
         return HashEmbedder(**params)
-    from evidentia.embed import SentenceTransformerEmbedder
+    from evidentiaslr.embed import SentenceTransformerEmbedder
 
     return SentenceTransformerEmbedder(**params)
 

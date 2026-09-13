@@ -4,8 +4,8 @@ import json
 
 import pytest
 
-from evidentia import Corpus, Record
-from evidentia.cli import main
+from evidentiaslr import Corpus, Record
+from evidentiaslr.cli import main
 
 
 @pytest.fixture

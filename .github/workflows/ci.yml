@@ -20,7 +20,7 @@ jobs:
           python-version: ${{ matrix.python-version }}
       - run: pip install ".[dev,faiss,fulltext]"
       - run: ruff check src tests
-      - run: pytest --cov=evidentia --cov-report=term-missing --cov-fail-under=85
+      - run: pytest --cov=evidentiaslr --cov-report=term-missing --cov-fail-under=85
 
   cross-platform-determinism:
     # The reproducibility claim is only credible if CI enforces it across

@@ -2,8 +2,8 @@
 
 import json
 
-from evidentia import FlatIndex, HashEmbedder, Retriever, issue, verify
-from evidentia.certificate import evidence_digest
+from evidentiaslr import FlatIndex, HashEmbedder, Retriever, issue, verify
+from evidentiaslr.certificate import evidence_digest
 
 
 def evidence_for(corpus, dimension=128, query="transformer models clinical text", k=10):

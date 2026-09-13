@@ -10,9 +10,9 @@ from __future__ import annotations
 
 import pytest
 
-from evidentia import Corpus, Record
-from evidentia.chunking import TEISectionChunker, canonical_section
-from evidentia.sections import (
+from evidentiaslr import Corpus, Record
+from evidentiaslr.chunking import TEISectionChunker, canonical_section
+from evidentiaslr.sections import (
     SECTION_LABELS,
     classify_record_sections,
     classify_section,

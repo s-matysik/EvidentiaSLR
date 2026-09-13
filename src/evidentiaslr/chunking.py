@@ -67,7 +67,7 @@ def split_sentences(text: str) -> list[str]:
 
 
 def canonical_section(name: str) -> str:
-    """Canonical IMRaD label for a heading. See `evidentia.sections`.
+    """Canonical IMRaD label for a heading. See `evidentiaslr.sections`.
 
     Kept as a thin delegation so existing call sites do not change, while the
     classification rules live in one auditable place.

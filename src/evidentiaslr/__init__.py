@@ -1,4 +1,4 @@
-"""Evidentia — reproducible retrieval for literature analysis.
+"""EvidentiaSLR — reproducible retrieval for literature analysis.
 
 Vector databases are treated as neutral plumbing in retrieval-augmented
 literature work. They are not. Approximate indexes drop documents in a
@@ -6,7 +6,7 @@ seed-dependent way, quantisation is lossy, and the same encoder on two devices
 disagrees in the low-order bits — so the same corpus and the same question can
 yield a different evidence set, and therefore a different conclusion.
 
-Evidentia makes that measurable (Evidence Set Fidelity, Evidence Set
+EvidentiaSLR makes that measurable (Evidence Set Fidelity, Evidence Set
 Stability, Synthesis Divergence) and makes a given run verifiable (evidence
 certificates).
 """
@@ -19,7 +19,7 @@ from __future__ import annotations
 try:
     from importlib.metadata import version as _pkg_version
 
-    __version__ = _pkg_version("evidentia")
+    __version__ = _pkg_version("evidentiaslr")
 except Exception:  # pragma: no cover - source tree without installation
     __version__ = "1.0.0"
 

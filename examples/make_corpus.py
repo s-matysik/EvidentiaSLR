@@ -11,7 +11,7 @@ from __future__ import annotations
 import argparse
 from pathlib import Path
 
-from evidentia import Corpus, Record
+from evidentiaslr import Corpus, Record
 
 TOPICS = (
     "approximate nearest neighbour search recall guarantees",
