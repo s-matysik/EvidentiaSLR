@@ -1,5 +1,14 @@
 name: docs
 
+# Deploys through the Pages deployment API rather than by pushing to a
+# gh-pages branch. A branch push made with the workflow's GITHUB_TOKEN does
+# not trigger further workflows, including the implicit Pages build, so a
+# gh-deploy workflow updates the branch while leaving the published site on
+# the previous build. This flow deploys the artefact directly and has no such
+# gap.
+#
+# Requires Settings -> Pages -> Source: GitHub Actions.
+
 on:
   push:
     branches: [main]
@@ -10,19 +19,19 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: read
+  pages: write
+  id-token: write
 
 concurrency:
-  group: docs
-  cancel-in-progress: true
+  group: pages
+  cancel-in-progress: false
 
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
 
       - uses: actions/setup-python@v5
         with:
@@ -31,10 +40,27 @@ jobs:
       - name: Install the pinned documentation toolchain
         run: pip install "mkdocs==1.6.1" "mkdocs-material==9.7.7"
 
-      - name: Identify the committer
-        run: |
-          git config user.name  "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+      - name: Build the site
+        run: mkdocs build --strict --site-dir _site
 
-      - name: Build and publish to gh-pages
-        run: mkdocs gh-deploy --force
+      - name: Check that the build carries the current name
+        run: |
+          grep -q "EvidentiaSLR" _site/index.html
+          if grep -q "s-matysik/evidentia\"" _site/index.html; then
+            echo "the build still links to the pre-rename repository" >&2
+            exit 1
+          fi
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
