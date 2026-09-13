@@ -1,0 +1,40 @@
+name: docs
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'docs/**'
+      - 'mkdocs.yml'
+      - '.github/workflows/docs.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: docs
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install the pinned documentation toolchain
+        run: pip install "mkdocs==1.6.1" "mkdocs-material==9.7.7"
+
+      - name: Identify the committer
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+      - name: Build and publish to gh-pages
+        run: mkdocs gh-deploy --force
