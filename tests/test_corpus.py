@@ -1,7 +1,7 @@
 """Canonicalisation, identity and hashing."""
 
-from evidentia import Corpus, Record
-from evidentia.corpus import normalise_doi, normalise_text
+from evidentiaslr import Corpus, Record
+from evidentiaslr.corpus import normalise_doi, normalise_text
 
 
 def test_normalisation_collapses_cosmetic_differences():

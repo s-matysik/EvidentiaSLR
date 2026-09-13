@@ -1,0 +1,14 @@
+One study conducted a power analysis requiring a minimum sample size of 788 participants for a two-tailed t-test.
+Another power analysis for an F test with eight groups determined a minimum required sample size of 416.
+Researchers recruited 1600 respondents and adjusted the target sample to 1248 based on unvaccinated population estimates.
+A conceptual model study used a single case study, Gege Point, to illustrate blockchain-enabled loyalty program propositions.
+One study applied cluster sampling by age and sex with effect size 0.15 and power 0.90 at 95% confidence.
+That study's final sample after removing invalid responses totaled 1403, a 91.64% response rate.
+Another survey began with 200 willing participants, yielding 172 respondents and 148 usable surveys after screening.
+Mardia's coefficient assessed normality in AMOS, and t-tests and structural equation modeling tested mediation hypotheses.
+A separate study used Covariance-based Structural Equation Modeling rather than Partial Least Square Structural Equation Modeling.
+That study's sample size of 420 per group, totaling 840, exceeded the 250-observation threshold for CB-SEM reliability.
+Cronbach's alpha coefficients across four scales exceeded 0.7 in both samples analyzed.
+Confirmatory factor analysis was conducted using AMOS 22.0 to validate scale constructs.
+Sensitivity analysis methods were reviewed for Bayesian Networks, including single and multiple parameter change approaches.
+A systematic review examined machine learning algorithms applied to condition monitoring and predictive maintenance research questions.

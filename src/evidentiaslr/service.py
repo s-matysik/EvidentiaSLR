@@ -28,7 +28,7 @@ from .index import build_index
 from .litrev import corpus_from_source_files
 from .retrieve import Retriever
 
-app = FastAPI(title="Evidentia", version=__version__)
+app = FastAPI(title="EvidentiaSLR", version=__version__)
 
 _DETERMINISM = enforce(DeterminismConfig())
 

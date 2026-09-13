@@ -2,8 +2,8 @@
 
 import pytest
 
-from evidentia.exceptions import ConfigurationError
-from evidentia.lexical import BM25, tokenise
+from evidentiaslr.exceptions import ConfigurationError
+from evidentiaslr.lexical import BM25, tokenise
 
 
 def build() -> BM25:

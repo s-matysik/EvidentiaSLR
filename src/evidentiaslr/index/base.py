@@ -29,7 +29,7 @@ def require_module(module: str, extra: str) -> None:
     """
     if importlib.util.find_spec(module) is None:
         raise BackendUnavailableError(
-            f"{module} is required for this backend; install evidentia[{extra}]"
+            f"{module} is required for this backend; install evidentiaslr[{extra}]"
         )
 
 

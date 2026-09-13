@@ -1,6 +1,6 @@
 """LitRev ingestion and protocol handling."""
 
-from evidentia.litrev import LitRevReview, corpus_from_source_files, partition_source_files
+from evidentiaslr.litrev import LitRevReview, corpus_from_source_files, partition_source_files
 
 
 def test_corpus_from_source_files_uses_tei_and_skips_failures(tei):

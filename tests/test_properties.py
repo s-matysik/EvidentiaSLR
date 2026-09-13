@@ -20,18 +20,18 @@ hypothesis = pytest.importorskip("hypothesis", reason="pip install hypothesis")
 from hypothesis import HealthCheck, assume, given, settings  # noqa: E402
 from hypothesis import strategies as st  # noqa: E402
 
-from evidentia import Corpus, FlatIndex, HashEmbedder, Record  # noqa: E402
-from evidentia.chunking import FixedWindowChunker, RecordChunker, SentenceChunker  # noqa: E402
-from evidentia.determinism import l2_normalise, quantise, stable_hash  # noqa: E402
-from evidentia.lexical import BM25  # noqa: E402
-from evidentia.metrics import (  # noqa: E402
+from evidentiaslr import Corpus, FlatIndex, HashEmbedder, Record  # noqa: E402
+from evidentiaslr.chunking import FixedWindowChunker, RecordChunker, SentenceChunker  # noqa: E402
+from evidentiaslr.determinism import l2_normalise, quantise, stable_hash  # noqa: E402
+from evidentiaslr.lexical import BM25  # noqa: E402
+from evidentiaslr.metrics import (  # noqa: E402
     evidence_set_fidelity,
     evidence_set_stability,
     jaccard,
     kendall_tau_on_common,
     rank_biased_overlap,
 )
-from evidentia.retrieve import reciprocal_rank_fusion  # noqa: E402
+from evidentiaslr.retrieve import reciprocal_rank_fusion  # noqa: E402
 
 SETTINGS = settings(
     max_examples=60,

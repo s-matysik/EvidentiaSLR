@@ -17,9 +17,9 @@ import importlib.util
 import numpy as np
 import pytest
 
-from evidentia import build_index
-from evidentia.exceptions import ConfigurationError, PipelineStateError
-from evidentia.index import EXACT_BACKENDS
+from evidentiaslr import build_index
+from evidentiaslr.exceptions import ConfigurationError, PipelineStateError
+from evidentiaslr.index import EXACT_BACKENDS
 
 # (name, kwargs, required module). Service-backed backends need a running
 # server, not merely an import, so they are excluded from the in-process

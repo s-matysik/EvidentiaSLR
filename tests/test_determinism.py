@@ -2,8 +2,8 @@
 
 import numpy as np
 
-from evidentia import HashEmbedder
-from evidentia.determinism import DeterminismConfig, enforce, quantise, rng, stable_hash
+from evidentiaslr import HashEmbedder
+from evidentiaslr.determinism import DeterminismConfig, enforce, quantise, rng, stable_hash
 
 
 def test_quantise_removes_low_order_drift():

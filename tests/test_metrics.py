@@ -2,8 +2,8 @@
 
 import pytest
 
-from evidentia.exceptions import ConfigurationError
-from evidentia.metrics import (
+from evidentiaslr.exceptions import ConfigurationError
+from evidentiaslr.metrics import (
     bootstrap_ci,
     crossover_analysis,
     evidence_set_fidelity,
@@ -13,7 +13,7 @@ from evidentia.metrics import (
     rank_biased_overlap,
     synthesis_divergence,
 )
-from evidentia.synth import LexicalOverlapGrounding, grounding_fn
+from evidentiaslr.synth import LexicalOverlapGrounding, grounding_fn
 
 # ------------------------------------------------------------- agreement
 

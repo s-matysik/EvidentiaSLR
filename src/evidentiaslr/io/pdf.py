@@ -104,7 +104,7 @@ def _require_httpx():
         import httpx
     except ImportError as exc:  # pragma: no cover
         raise BackendUnavailableError(
-            "httpx is required for GROBID ingestion; install evidentia[fulltext]"
+            "httpx is required for GROBID ingestion; install evidentiaslr[fulltext]"
         ) from exc
     return httpx
 

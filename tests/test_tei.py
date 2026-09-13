@@ -1,7 +1,7 @@
 """GROBID TEI parsing."""
 
-from evidentia.chunking import canonical_section
-from evidentia.tei import parse_tei, record_from_extracted
+from evidentiaslr.chunking import canonical_section
+from evidentiaslr.tei import parse_tei, record_from_extracted
 
 
 def test_parse_tei_recovers_metadata_and_sections(tei):

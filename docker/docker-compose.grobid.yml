@@ -1,7 +1,7 @@
-# Standalone GROBID, for using Evidentia without a full LitRev deployment.
+# Standalone GROBID, for using EvidentiaSLR without a full LitRev deployment.
 #
 #     docker compose -f docker/docker-compose.grobid.yml up -d
-#     evidentia ingest-pdf data/pdf --out corpus.jsonl
+#     evidentiaslr ingest-pdf data/pdf --out corpus.jsonl
 #
 # The CRF image is ~350 MB and runs anywhere including Apple Silicon. The
 # full deep-learning image (grobid/grobid) segments references better but is

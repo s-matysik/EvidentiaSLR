@@ -16,7 +16,7 @@ macOS ships no `python` executable and its system `python3` is 3.9. Use
 ## Layout
 
 One module per responsibility, one test file per module. A new index backend
-goes in `src/evidentia/index/<name>.py`, is registered in
+goes in `src/evidentiaslr/index/<name>.py`, is registered in
 `index/__init__.py:INDEX_REGISTRY` behind a lazy import, and gets its own
 tests in `tests/test_index.py`.
 

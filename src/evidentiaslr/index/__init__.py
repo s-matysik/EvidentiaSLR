@@ -1,7 +1,7 @@
 """Vector index backends.
 
 One module per backend. Optional dependencies are imported inside the factory
-functions, so `import evidentia` works with NumPy alone and a missing backend
+functions, so `import evidentiaslr` works with NumPy alone and a missing backend
 fails at the point of use with a clear message rather than at import time.
 """
 

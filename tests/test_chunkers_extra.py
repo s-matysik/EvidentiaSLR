@@ -10,14 +10,14 @@ from __future__ import annotations
 
 import pytest
 
-from evidentia import Corpus, FlatIndex, HashEmbedder, Record, Retriever, span_agreement
-from evidentia.chunkers_extra import (
+from evidentiaslr import Corpus, FlatIndex, HashEmbedder, Record, Retriever, span_agreement
+from evidentiaslr.chunkers_extra import (
     ParagraphChunker,
     RecursiveCharacterChunker,
     SemanticChunker,
     SlidingSentenceChunker,
 )
-from evidentia.chunking import (
+from evidentiaslr.chunking import (
     CHUNKERS,
     MODEL_DEPENDENT_CHUNKERS,
     SentenceChunker,
@@ -25,8 +25,8 @@ from evidentia.chunking import (
     body_text,
     canonical_source,
 )
-from evidentia.exceptions import ConfigurationError
-from evidentia.metrics.spans import merge_spans, record_agreement
+from evidentiaslr.exceptions import ConfigurationError
+from evidentiaslr.metrics.spans import merge_spans, record_agreement
 
 
 @pytest.fixture
@@ -264,13 +264,13 @@ def test_record_agreement_is_coarser_than_span_agreement(sectioned_corpus):
 def test_sentence_splitting_survives_academic_prose(text, expected):
     """Over-splitting a citation is worse than under-splitting: the second half
     loses the context that made the first half meaningful."""
-    from evidentia.chunking import split_sentences
+    from evidentiaslr.chunking import split_sentences
 
     assert len(split_sentences(text)) == expected
 
 
 def test_sentence_splitting_accepts_non_capital_openers():
-    from evidentia.chunking import split_sentences
+    from evidentiaslr.chunking import split_sentences
 
     assert len(split_sentences("Total was computed. 42 cases remained.")) == 2
     assert len(split_sentences('He said so. "Quoted" follows.')) == 2
@@ -279,7 +279,7 @@ def test_sentence_splitting_accepts_non_capital_openers():
 def test_semantic_chunker_seed_changes_the_boundaries():
     """The chunker-side analogue of rebuilding an index: same configuration,
     different seed, different evidence text."""
-    from evidentia.chunking import SentenceChunker  # noqa: F401
+    from evidentiaslr.chunking import SentenceChunker  # noqa: F401
 
     sentences = " ".join(
         f"Sentence {i} discusses topic {i % 5} in considerable detail." for i in range(40)
@@ -303,7 +303,7 @@ def test_build_chunker_injects_the_pipeline_embedder():
     their own and forgot that a model-dependent one needs the embedder — the
     CLI died with a bare TypeError at the prompt, the service with an
     unhandled 500. One factory, one rule."""
-    from evidentia.chunking import build_chunker
+    from evidentiaslr.chunking import build_chunker
 
     embedder = HashEmbedder(dimension=64)
     chunker = build_chunker("semantic", embedder=embedder, percentile=90)
@@ -311,22 +311,22 @@ def test_build_chunker_injects_the_pipeline_embedder():
 
 
 def test_build_chunker_without_an_embedder_fails_with_guidance():
-    from evidentia.chunking import build_chunker
-    from evidentia.exceptions import ConfigurationError
+    from evidentiaslr.chunking import build_chunker
+    from evidentiaslr.exceptions import ConfigurationError
 
     with pytest.raises(ConfigurationError, match="embedding model"):
         build_chunker("semantic")
 
 
 def test_build_chunker_rejects_unknown_names():
-    from evidentia.chunking import build_chunker
-    from evidentia.exceptions import UnknownBackendError
+    from evidentiaslr.chunking import build_chunker
+    from evidentiaslr.exceptions import UnknownBackendError
 
     with pytest.raises(UnknownBackendError, match="telepathy"):
         build_chunker("telepathy")
 
 
 def test_build_chunker_leaves_pure_chunkers_alone():
-    from evidentia.chunking import build_chunker
+    from evidentiaslr.chunking import build_chunker
 
     assert build_chunker("sentence", max_words=50).spec.startswith("sentence/")

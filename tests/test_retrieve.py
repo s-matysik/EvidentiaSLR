@@ -2,11 +2,11 @@
 
 import pytest
 
-from evidentia import FlatIndex, HashEmbedder, Retriever, TEISectionChunker
-from evidentia.corpus import Corpus
-from evidentia.exceptions import ConfigurationError, PipelineStateError
-from evidentia.retrieve import reciprocal_rank_fusion
-from evidentia.tei import parse_tei
+from evidentiaslr import FlatIndex, HashEmbedder, Retriever, TEISectionChunker
+from evidentiaslr.corpus import Corpus
+from evidentiaslr.exceptions import ConfigurationError, PipelineStateError
+from evidentiaslr.retrieve import reciprocal_rank_fusion
+from evidentiaslr.tei import parse_tei
 
 
 def test_retriever_is_bit_identical_across_repeated_runs(corpus_factory):

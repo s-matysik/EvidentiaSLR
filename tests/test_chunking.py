@@ -2,10 +2,10 @@
 
 import pytest
 
-from evidentia import Corpus, RecordChunker, TEISectionChunker
-from evidentia.chunking import FixedWindowChunker, SentenceChunker, canonical_section
-from evidentia.exceptions import ConfigurationError
-from evidentia.tei import parse_tei
+from evidentiaslr import Corpus, RecordChunker, TEISectionChunker
+from evidentiaslr.chunking import FixedWindowChunker, SentenceChunker, canonical_section
+from evidentiaslr.exceptions import ConfigurationError
+from evidentiaslr.tei import parse_tei
 
 
 def test_chunk_ids_are_stable_across_runs(corpus_factory):

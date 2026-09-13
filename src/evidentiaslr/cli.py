@@ -1,9 +1,9 @@
 """Command line interface.
 
-    evidentia retrieve  --corpus c.jsonl --query "..." --cert out.json
-    evidentia verify    --corpus c.jsonl --cert out.json
-    evidentia stability --corpus c.jsonl --query "..." --index lsh --runs 10
-    evidentia hash      --corpus c.jsonl
+    evidentiaslr retrieve  --corpus c.jsonl --query "..." --cert out.json
+    evidentiaslr verify    --corpus c.jsonl --cert out.json
+    evidentiaslr stability --corpus c.jsonl --query "..." --index lsh --runs 10
+    evidentiaslr hash      --corpus c.jsonl
 """
 
 from __future__ import annotations
@@ -268,7 +268,7 @@ def _print_evidence(evidence, certificate, corpus, args) -> None:
     print(f"digest  : {certificate.evidence_digest}")
     if args.cert:
         print(f"cert    : {args.cert}")
-        print(f"verify  : evidentia verify --corpus {args.corpus} --cert {args.cert}")
+        print(f"verify  : evidentiaslr verify --corpus {args.corpus} --cert {args.cert}")
 
 
 def _wrap(text: str, width: int, max_chars: int) -> list[str]:
@@ -359,8 +359,8 @@ def cmd_stability(args) -> int:
 
 
 def build_parser() -> argparse.ArgumentParser:
-    parser = argparse.ArgumentParser(prog="evidentia", description=__doc__)
-    parser.add_argument("--version", action="version", version=f"evidentia {__version__}")
+    parser = argparse.ArgumentParser(prog="evidentiaslr", description=__doc__)
+    parser.add_argument("--version", action="version", version=f"evidentiaslr {__version__}")
     sub = parser.add_subparsers(dest="command", required=True)
 
     def common(p, with_query: bool = True):

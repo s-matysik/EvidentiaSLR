@@ -1,4 +1,4 @@
-# Evidentia
+# EvidentiaSLR
 
 Reproducible retrieval for literature analysis.
 
@@ -11,7 +11,7 @@ swap two near-tied documents. The consequence is that the same corpus and the
 same question can produce a different evidence set — and therefore a different
 conclusion — on a second run.
 
-Evidentia makes that effect measurable and makes a given run verifiable.
+EvidentiaSLR makes that effect measurable and makes a given run verifiable.
 
 ## Metrics
 
@@ -79,16 +79,16 @@ moves the evidence set further.
 ## Install
 
 ```bash
-pip install evidentia                # core, numpy only
-pip install "evidentia[faiss,sbert]" # real encoders and ANN backends
-pip install "evidentia[all]"         # every backend and the HTTP service
+pip install evidentiaslr                # core, numpy only
+pip install "evidentiaslr[faiss,sbert]" # real encoders and ANN backends
+pip install "evidentiaslr[all]"         # every backend and the HTTP service
 ```
 
 ## Use
 
 ```python
-from evidentia import Corpus, HashEmbedder, Retriever, FlatIndex, issue
-from evidentia.determinism import enforce, DeterminismConfig
+from evidentiaslr import Corpus, HashEmbedder, Retriever, FlatIndex, issue
+from evidentiaslr.determinism import enforce, DeterminismConfig
 
 enforce(DeterminismConfig(seed=42))
 
@@ -103,7 +103,7 @@ issue(evidence, corpus_size=len(corpus)).save("cert.json")
 Measuring an approximate backend against the exact reference:
 
 ```python
-from evidentia import build_index, evidence_set_fidelity, evidence_set_stability
+from evidentiaslr import build_index, evidence_set_fidelity, evidence_set_stability
 
 runs = []
 for seed in range(10):
@@ -119,7 +119,7 @@ evidence_set_stability(runs)                          # agreement across builds
 Scopus and Web of Science CSV, RIS and BibTeX:
 
 ```bash
-evidentia import scopus_export.csv --out corpus.jsonl \
+evidentiaslr import scopus_export.csv --out corpus.jsonl \
     --keep-types Article Review "Conference paper" --require-abstract
 ```
 
@@ -130,7 +130,7 @@ provenance, not diagnostics, so it belongs in the review record. Scopus writes
 than indexed.
 
 ```python
-from evidentia.io import load_corpus
+from evidentiaslr.io import load_corpus
 corpus, report = load_corpus("scopus_export.csv", require_abstract=True)
 print(report.summary())
 ```
@@ -142,7 +142,7 @@ onto IMRaD, and real headings are numbered, compound and domain-specific.
 Audit yours before trusting a filter:
 
 ```bash
-evidentia sections --corpus corpus.jsonl
+evidentiaslr sections --corpus corpus.jsonl
 ```
 
 It reports the label distribution and, crucially, the headings no rule
@@ -158,7 +158,7 @@ Put the files in `data/pdf/` (any nesting), start GROBID, ingest:
 
 ```bash
 docker compose -f docker/docker-compose.grobid.yml up -d   # or: make grobid
-evidentia ingest-pdf data/pdf --out corpus.jsonl
+evidentiaslr ingest-pdf data/pdf --out corpus.jsonl
 ```
 
 GROBID recovers IMRaD structure, which is what `TEISectionChunker` and
@@ -167,7 +167,7 @@ database export — GROBID recovers those less reliably than Scopus already
 did — merge the two:
 
 ```bash
-evidentia ingest-pdf data/pdf --out corpus.jsonl --metadata scopus_export.csv
+evidentiaslr ingest-pdf data/pdf --out corpus.jsonl --metadata scopus_export.csv
 ```
 
 TEI is cached by file content hash under `.evidentia-cache/tei/`, so
@@ -188,14 +188,14 @@ anything depending on section filtering will silently degrade.
 ## CLI
 
 ```bash
-evidentia import      scopus.csv --out corpus.jsonl
-evidentia ingest-pdf  data/pdf   --out corpus.jsonl --metadata scopus.csv
+evidentiaslr import      scopus.csv --out corpus.jsonl
+evidentiaslr ingest-pdf  data/pdf   --out corpus.jsonl --metadata scopus.csv
 evidentia ingest-tei  .evidentia-cache/tei --out corpus.jsonl
-evidentia sections  --corpus corpus.jsonl
-evidentia hash      --corpus corpus.jsonl
-evidentia retrieve  --corpus corpus.jsonl --query "..." -k 20 --cert cert.json
-evidentia verify    --corpus corpus.jsonl --cert cert.json     # exit 0 = reproduced
-evidentia stability --corpus corpus.jsonl --query "..." --index faiss-hnsw --runs 10
+evidentiaslr sections  --corpus corpus.jsonl
+evidentiaslr hash      --corpus corpus.jsonl
+evidentiaslr retrieve  --corpus corpus.jsonl --query "..." -k 20 --cert cert.json
+evidentiaslr verify    --corpus corpus.jsonl --cert cert.json     # exit 0 = reproduced
+evidentiaslr stability --corpus corpus.jsonl --query "..." --index faiss-hnsw --runs 10
 ```
 
 `verify` re-runs the pipeline and reports which component drifted — corpus,
@@ -215,11 +215,11 @@ production ANN index: what it drops depends on a random draw at build time.
 ## LitRev integration
 
 LitRev already extracts PDFs through GROBID and stores TEI in
-`review_source_files.extracted_metadata->tei`. Evidentia reads that directly —
+`review_source_files.extracted_metadata->tei`. EvidentiaSLR reads that directly —
 no second extraction pass, no schema change to start:
 
 ```python
-from evidentia.litrev import LitRevClient
+from evidentiaslr.litrev import LitRevClient
 corpus = LitRevClient(base_url, token).corpus(review_id)
 ```
 
@@ -231,7 +231,7 @@ to method sections.
 ## Repository layout
 
 ```
-src/evidentia/
+src/evidentiaslr/
   determinism.py       seeds, thread pinning, vector quantisation
   exceptions.py        EvidentiaError hierarchy
   corpus.py            canonical Record / Corpus, SHA-256 identity
@@ -248,7 +248,7 @@ src/evidentia/
   io/                  scopus, wos, ris, bibtex, pdf (GROBID)
   litrev.py            platform integration
   service.py           FastAPI app
-  cli.py               evidentia command
+  cli.py               evidentiaslr command
   index/               base, flat, lsh, faiss_hnsw, faiss_ivfpq,
                        qdrant, pgvector, chroma
   metrics/             agreement, fidelity, stability, divergence,
@@ -266,7 +266,7 @@ scripts/               cross-platform determinism gate
 Python 3.10 or newer is required.
 
 ```bash
-git clone https://github.com/s-matysik/evidentia && cd evidentia
+git clone https://github.com/s-matysik/EvidentiaSLR && cd EvidentiaSLR
 python3 -m venv .venv && source .venv/bin/activate
 pip install -e ".[dev]"          # core + test tooling, NumPy only
 pip install -e ".[dev,faiss]"    # add real ANN backends

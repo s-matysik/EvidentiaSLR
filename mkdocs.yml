@@ -1,6 +1,6 @@
-site_name: Evidentia
-site_url: https://s-matysik.github.io/evidentia/
-repo_url: https://github.com/s-matysik/evidentia
+site_name: EvidentiaSLR
+site_url: https://s-matysik.github.io/EvidentiaSLR/
+repo_url: https://github.com/s-matysik/EvidentiaSLR
 theme:
   name: material
   palette:

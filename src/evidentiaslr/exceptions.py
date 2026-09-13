@@ -3,14 +3,14 @@
 A library should let callers distinguish "you configured this wrongly" from
 "this backend is not installed" from "the pipeline was used out of order",
 without matching on message strings. Everything raised deliberately by
-Evidentia derives from `EvidentiaError`.
+EvidentiaSLR derives from `EvidentiaError`.
 """
 
 from __future__ import annotations
 
 
 class EvidentiaError(Exception):
-    """Base class for every error raised by Evidentia."""
+    """Base class for every error raised by EvidentiaSLR."""
 
 
 class ConfigurationError(EvidentiaError, ValueError):

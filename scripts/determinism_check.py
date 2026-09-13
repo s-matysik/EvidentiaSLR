@@ -15,9 +15,9 @@ from __future__ import annotations
 import argparse
 import sys
 
-from evidentia import Corpus, FlatIndex, HashEmbedder, Record, Retriever
-from evidentia.certificate import evidence_digest
-from evidentia.determinism import DeterminismConfig, enforce
+from evidentiaslr import Corpus, FlatIndex, HashEmbedder, Record, Retriever
+from evidentiaslr.certificate import evidence_digest
+from evidentiaslr.determinism import DeterminismConfig, enforce
 
 QUERY = "approximate nearest neighbour search and evidence set stability"
 TOPICS = (

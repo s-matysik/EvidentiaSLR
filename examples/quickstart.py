@@ -12,7 +12,7 @@ from __future__ import annotations
 
 from make_corpus import build
 
-from evidentia import (
+from evidentiaslr import (
     FlatIndex,
     HashEmbedder,
     Retriever,
@@ -22,7 +22,7 @@ from evidentia import (
     issue,
     verify,
 )
-from evidentia.determinism import DeterminismConfig, enforce
+from evidentiaslr.determinism import DeterminismConfig, enforce
 
 QUERY = "approximate nearest neighbour search recall guarantees"
 K = 20

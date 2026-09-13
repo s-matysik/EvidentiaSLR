@@ -25,7 +25,7 @@ import statistics
 import time
 from pathlib import Path
 
-from evidentia import (
+from evidentiaslr import (
     Corpus,
     FlatIndex,
     HashEmbedder,
@@ -36,14 +36,14 @@ from evidentia import (
     issue,
     verify,
 )
-from evidentia.chunking import CHUNKERS
-from evidentia.determinism import DeterminismConfig, enforce
+from evidentiaslr.chunking import CHUNKERS
+from evidentiaslr.determinism import DeterminismConfig, enforce
 
 
 def build_embedder(name: str, model: str, dimension: int):
     if name == "hash":
         return HashEmbedder(dimension=dimension)
-    from evidentia.embed import SentenceTransformerEmbedder
+    from evidentiaslr.embed import SentenceTransformerEmbedder
 
     return SentenceTransformerEmbedder(model_name=model, device="cpu")
 
@@ -73,7 +73,7 @@ def demo_coverage(corpus: Corpus) -> dict:
     # The same classification the chunker uses — with hierarchy inheritance —
     # not per-heading lookup. Reporting one distribution while retrieving with
     # another put two contradictory numbers for one corpus into one artefact.
-    from evidentia.sections import classify_record_sections
+    from evidentiaslr.sections import classify_record_sections
 
     sections: dict[str, int] = {}
     for record in corpus:
@@ -83,7 +83,7 @@ def demo_coverage(corpus: Corpus) -> dict:
     # Measure the text the chunkers actually see. A GROBID corpus carries
     # sections but no flattened body, so reading `full_text` here reported a
     # median of zero for a corpus full of text.
-    from evidentia.chunking import body_text
+    from evidentiaslr.chunking import body_text
 
     lengths = [len(body_text(record).split()) for record in corpus]
     stats = corpus.stats()

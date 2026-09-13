@@ -4,10 +4,10 @@ import shutil
 
 import pytest
 
-from evidentia import Corpus, Record
-from evidentia.exceptions import ConfigurationError, CorpusError
-from evidentia.io import corpus_from_pdf_dir, merge_pdf_corpus
-from evidentia.io.pdf import GrobidClient, LocalPdfExtractor, PdfIngestReport, file_digest
+from evidentiaslr import Corpus, Record
+from evidentiaslr.exceptions import ConfigurationError, CorpusError
+from evidentiaslr.io import corpus_from_pdf_dir, merge_pdf_corpus
+from evidentiaslr.io.pdf import GrobidClient, LocalPdfExtractor, PdfIngestReport, file_digest
 
 from .helpers import TEI_SAMPLE
 
@@ -249,7 +249,7 @@ def test_report_serialises_and_reports_coverage():
 def test_corpus_rebuilds_from_cached_tei(tmp_path):
     """The TEI cache is the durable artefact: a corpus must be reconstructible
     from it alone, with neither the source PDFs nor a running GROBID."""
-    from evidentia.io import corpus_from_tei_dir
+    from evidentiaslr.io import corpus_from_tei_dir
 
     cache = tmp_path / "tei"
     cache.mkdir()
@@ -272,7 +272,7 @@ def test_corpus_rebuilds_from_cached_tei(tmp_path):
 def test_tei_recovery_matches_the_original_ingestion(tmp_path, pdf_dir):
     """Recovering from cache must give the same corpus hash as ingesting the
     PDFs did, or the cache is not a faithful record of the run."""
-    from evidentia.io import corpus_from_tei_dir
+    from evidentiaslr.io import corpus_from_tei_dir
 
     cache = tmp_path / "tei"
     client = GrobidClient(tei_cache=cache)
@@ -289,7 +289,7 @@ def test_tei_recovery_matches_the_original_ingestion(tmp_path, pdf_dir):
 
 
 def test_tei_recovery_reports_malformed_files(tmp_path):
-    from evidentia.io import corpus_from_tei_dir
+    from evidentiaslr.io import corpus_from_tei_dir
 
     cache = tmp_path / "tei"
     cache.mkdir()
@@ -303,7 +303,7 @@ def test_tei_recovery_reports_malformed_files(tmp_path):
 
 
 def test_tei_recovery_rejects_an_empty_directory(tmp_path):
-    from evidentia.io import corpus_from_tei_dir
+    from evidentiaslr.io import corpus_from_tei_dir
 
     empty = tmp_path / "nothing"
     empty.mkdir()

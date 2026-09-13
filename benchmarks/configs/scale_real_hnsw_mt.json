@@ -1,0 +1,82 @@
+{
+ "_comment": "HNSW stability where its non-determinism actually lives: multi-threaded build. The seed argument is inert in faiss 1.15.0 (hnsw.rng has no settable seed), so single-threaded builds are bit-identical and measure nothing.",
+ "corpus": "/Users/sebastianmatysik/!!!Evidentia softwarex/data/corpus60.jsonl",
+ "corpus_sizes": [
+  74
+ ],
+ "k": 20,
+ "seed": 42,
+ "timing_repeats": 3,
+ "chunkers": [
+  {
+   "name": "fixed",
+   "params": {
+    "size": 60,
+    "overlap": 12
+   }
+  }
+ ],
+ "embedder": {
+  "name": "hash",
+  "dimension": 384
+ },
+ "queries": [
+  "what sample size was used",
+  "how many participants took part",
+  "what analytical method was applied",
+  "which statistical estimator was used",
+  "what reliability measures were reported",
+  "what were the reported effect sizes",
+  "how was the survey instrument validated",
+  "what response rate did the survey achieve",
+  "which sampling frame was used",
+  "how was the construct operationalised",
+  "what inclusion and exclusion criteria were applied",
+  "which software package performed the analysis",
+  "how was missing data handled",
+  "what control variables were included",
+  "how was common method bias assessed",
+  "which machine learning model was trained",
+  "how were hyperparameters selected",
+  "what train and test split was used",
+  "which evaluation metric was reported",
+  "how was cross-validation performed",
+  "what baseline was the model compared against",
+  "how was the dataset labelled",
+  "what preprocessing was applied to the text",
+  "how was inter-rater agreement measured",
+  "what ethical approval was obtained",
+  "how was informed consent obtained",
+  "which country was the data collected in",
+  "over what period was data collected",
+  "what was the unit of analysis",
+  "how was the model's discriminant validity established",
+  "what fit indices were reported",
+  "how was mediation tested",
+  "how was moderation tested",
+  "what robustness checks were performed"
+ ],
+ "backends": [
+  {
+   "name": "faiss-hnsw",
+   "params": {
+    "m": 32,
+    "ef_construction": 200,
+    "ef_search": 64,
+    "threads": 8
+   },
+   "seeds": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10
+   ]
+  }
+ ]
+}

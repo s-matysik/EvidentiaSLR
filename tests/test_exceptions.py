@@ -2,7 +2,7 @@
 
 import pytest
 
-from evidentia.exceptions import (
+from evidentiaslr.exceptions import (
     BackendUnavailableError,
     ConfigurationError,
     CorpusError,
