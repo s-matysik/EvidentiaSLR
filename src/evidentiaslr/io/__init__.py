@@ -62,7 +62,7 @@ def load_corpus(path: str | Path, fmt: str | None = None, **kwargs):
 
     `.ris` and `.bib` are unambiguous. `.csv` defaults to Scopus, since that
     is the more common export and a wrong guess would report every essential
-    column as unmapped — a loud failure rather than a silent one.
+    column as unmapped - a loud failure rather than a silent one.
     """
     path = Path(path)
     if fmt is None:

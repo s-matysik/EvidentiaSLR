@@ -135,7 +135,7 @@ def test_retrieve_with_the_semantic_chunker_injects_the_embedder(tmp_path, capsy
 
 def test_stability_report_states_its_pipeline(tmp_path, capsys):
     """A stability number without the pipeline that produced it cannot be
-    audited — in this tool of all tools."""
+    audited - in this tool of all tools."""
     corpus_path = tmp_path / "c.jsonl"
     Corpus([
         Record.build(title=f"Study {i}", abstract=f"Abstract number {i} with content.")

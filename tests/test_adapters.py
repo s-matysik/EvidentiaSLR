@@ -1,8 +1,8 @@
 """External adapters.
 
 SBERT, OpenAI, the NLI grounder, the LitRev client and the GROBID client all
-talk to something outside the process. Their logic — batching, fingerprinting,
-label resolution, error handling — is ours and must be tested; the remote
+talk to something outside the process. Their logic - batching, fingerprinting,
+label resolution, error handling - is ours and must be tested; the remote
 system is not. So each is exercised against a stub that answers the way the
 real service does, which also pins the request shape: if an adapter starts
 sending a different payload, these fail.

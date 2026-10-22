@@ -1,8 +1,8 @@
 """Additional chunkers, including the non-deterministic kind.
 
 `chunking.py` holds the chunkers that are pure functions of their input. This
-module holds the rest: the baselines every RAG stack ships, and — the reason
-it exists — a semantic chunker that places boundaries by calling an embedding
+module holds the rest: the baselines every RAG stack ships, and - the reason
+it exists - a semantic chunker that places boundaries by calling an embedding
 model.
 
 That last one matters more than the index question. A semantic chunker asks a
@@ -95,7 +95,7 @@ class RecursiveCharacterChunker(_BaseChunker):
 
     The de facto default across RAG frameworks, included so the comparison is
     against what people actually run rather than a straw man. Deterministic,
-    but its boundaries ignore meaning entirely — which is the point of
+    but its boundaries ignore meaning entirely - which is the point of
     comparing it with the semantic and structural alternatives.
     """
 
@@ -189,7 +189,7 @@ class SlidingSentenceChunker(_BaseChunker):
 
 
 class SemanticChunker(_BaseChunker):
-    """Embedding-based boundary placement — the non-deterministic one.
+    """Embedding-based boundary placement - the non-deterministic one.
 
     Follows the percentile method used by the mainstream implementations:
     embed each sentence, measure the distance between consecutive sentence

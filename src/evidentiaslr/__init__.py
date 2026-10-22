@@ -1,9 +1,9 @@
-"""EvidentiaSLR — reproducible retrieval for literature analysis.
+"""EvidentiaSLR - reproducible retrieval for literature analysis.
 
 Vector databases are treated as neutral plumbing in retrieval-augmented
 literature work. They are not. Approximate indexes drop documents in a
 seed-dependent way, quantisation is lossy, and the same encoder on two devices
-disagrees in the low-order bits — so the same corpus and the same question can
+disagrees in the low-order bits - so the same corpus and the same question can
 yield a different evidence set, and therefore a different conclusion.
 
 EvidentiaSLR makes that measurable (Evidence Set Fidelity, Evidence Set

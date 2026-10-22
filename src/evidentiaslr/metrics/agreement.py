@@ -53,7 +53,7 @@ def kendall_tau_on_common(a: Sequence[str], b: Sequence[str]) -> float:
 
     Restriction matters: an approximate index returns a partly different set,
     and tau over the union would conflate "reordered" with "replaced". Those
-    are separated here — membership is ESF's job, ordering is tau's.
+    are separated here - membership is ESF's job, ordering is tau's.
     """
     common = set(a) & set(b)
     if len(common) < 2:

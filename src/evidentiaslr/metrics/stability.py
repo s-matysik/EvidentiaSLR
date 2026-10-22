@@ -3,7 +3,7 @@
 How much do two builds of the *same* configuration agree with each other? An
 index can be stably wrong (low fidelity, high stability) or unstably right
 (high fidelity, low stability). Only the second breaks reproducibility, and
-only this metric detects it — which is why it is reported alongside fidelity
+only this metric detects it - which is why it is reported alongside fidelity
 rather than folded into it.
 """
 

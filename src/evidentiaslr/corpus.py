@@ -124,7 +124,7 @@ class Corpus:
         self.duplicates: list[tuple[str, str]] = []
         kept: list[Record] = []
         for candidates in grouped.values():
-            # Two exports of the same work can disagree — one carries the
+            # Two exports of the same work can disagree - one carries the
             # abstract, the other does not. Keeping whichever arrived first
             # would make the corpus hash depend on file order, which is the
             # one thing it must not do. Prefer the richer record, breaking

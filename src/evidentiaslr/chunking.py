@@ -115,7 +115,7 @@ def body_text(record: Record) -> str:
     Chunkers previously disagreed about this: the sentence and window
     chunkers read `full_text` and fell back to title-plus-abstract, while the
     section-aware ones read `sections`. On a corpus carrying sections but no
-    flattened body — which is what GROBID ingestion produces — they were
+    flattened body - which is what GROBID ingestion produces - they were
     therefore chunking different strings, and any comparison between them
     measured that discrepancy rather than the chunking strategy.
     """
@@ -129,8 +129,8 @@ def body_text(record: Record) -> str:
 def canonical_source(record: Record) -> str:
     """The single text against which every chunker's output is located.
 
-    Chunkers disagree about what a chunk is — a whole abstract, a sentence
-    window, a method section — so their chunk ids are incomparable by
+    Chunkers disagree about what a chunk is - a whole abstract, a sentence
+    window, a method section - so their chunk ids are incomparable by
     construction. Character offsets into one shared string are not. This is
     what makes "did two chunkers retrieve the same evidence?" a well-posed
     question rather than a category error.
@@ -152,7 +152,7 @@ def _locate(chunks: list[Chunk], record: Record) -> list[Chunk]:
 
     A chunk that cannot be located keeps (-1, -1) and span-based metrics fall
     back to record-level comparison for it. That happens when normalisation
-    altered the text — worth degrading gracefully rather than failing, but the
+    altered the text - worth degrading gracefully rather than failing, but the
     caller can count `located` to know how much of the comparison is exact.
     """
     source = canonical_source(record)
@@ -321,7 +321,7 @@ class TEISectionChunker(_BaseChunker):
         # The abstract is a section like any other and must obey the filter.
         # Emitting it unconditionally meant `keep_sections=("methods",)` still
         # returned abstracts, which the retriever's own filter then happened
-        # to mask — a bug that only surfaced once both were tested apart.
+        # to mask - a bug that only surfaced once both were tested apart.
         if record.abstract and (not self.keep_sections or "abstract" in self.keep_sections):
             pieces.append(("abstract", record.abstract))
 
@@ -382,8 +382,8 @@ def build_chunker(name: str, embedder=None, **params):
     Exists because the CLI, the HTTP service and the experiment driver each
     grew their own construction path, and only the driver remembered that a
     model-dependent chunker needs the pipeline embedder injected. The other
-    two crashed with a bare TypeError — the CLI at the prompt, the service as
-    an unhandled 500 — which is the kind of divergence a single factory ends.
+    two crashed with a bare TypeError - the CLI at the prompt, the service as
+    an unhandled 500 - which is the kind of divergence a single factory ends.
     """
     from .exceptions import ConfigurationError, UnknownBackendError
 

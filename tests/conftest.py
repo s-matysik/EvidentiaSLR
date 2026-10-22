@@ -2,7 +2,7 @@
 
 `synthetic_corpus` is built from a fixed topic rotation so that every test
 sees the same records with the same ids, and so that a query is guaranteed to
-have both strong and weak matches — which is what makes tie-breaking and
+have both strong and weak matches - which is what makes tie-breaking and
 approximation effects observable.
 """
 

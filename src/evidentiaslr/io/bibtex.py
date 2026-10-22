@@ -4,7 +4,7 @@ A minimal, dependency-free parser covering what bibliographic exports
 actually emit: `@type{key, field = {value},}` with braces or quotes, nested
 braces in titles, and LaTeX escapes for accented characters.
 
-It is not a general BibTeX implementation — no `@string` macros, no
+It is not a general BibTeX implementation - no `@string` macros, no
 concatenation, no cross-references. Those appear in hand-maintained .bib
 files, not in database exports, and pretending to support them would be worse
 than declining to.

@@ -1,6 +1,6 @@
 """Embedding backends.
 
-Every backend reports a `fingerprint` — provider, model name, resolved
+Every backend reports a `fingerprint` - provider, model name, resolved
 version, dimension, normalisation and quantisation grid. That string is what
 makes a certificate checkable: re-running with a silently upgraded model
 produces a different fingerprint and the verification fails loudly instead of

@@ -1,8 +1,6 @@
 """Vector index interface.
 
-Every backend must expose a `spec` that fully describes its construction —
-algorithm, structural parameters, search-time parameters and build seed —
-because those are precisely the variables the experiments manipulate.
+Every backend must expose a `spec` that fully describes its construction - algorithm, structural parameters, search-time parameters and build seed - because those are precisely the variables the experiments manipulate.
 
 `exact` marks backends that return the true top-k by construction. Only
 those can serve as the reference set when computing Evidence Set Fidelity.

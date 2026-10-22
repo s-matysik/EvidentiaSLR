@@ -1,7 +1,7 @@
 """Exact brute-force index.
 
 This is the reference implementation against which every approximate backend
-is measured, and — on the corpus sizes typical of a systematic review — it is
+is measured, and - on the corpus sizes typical of a systematic review - it is
 also the recommendation. A 10^6-chunk corpus at 384 dimensions is a 3 GB
 float64 matrix; at float32 and with the quantisation grid applied it fits in
 memory on a laptop and answers a query in well under a second.
@@ -66,7 +66,7 @@ class FlatIndex(BaseIndex):
         """Select and order the top k without sorting the whole corpus.
 
         A full Python sort is O(n log n) with a comparison callback and, at a
-        million chunks, dominates the search by orders of magnitude — the
+        million chunks, dominates the search by orders of magnitude - the
         matrix product itself is fast. `argpartition` finds the k-th largest
         score in linear time; everything at or above it is then collected and
         only that small set is sorted with the deterministic

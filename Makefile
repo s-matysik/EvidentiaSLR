@@ -103,7 +103,7 @@ bench: demo-corpus
 serve: check-python
 	$(PY) uvicorn evidentia.service:app --host 0.0.0.0 --port 8000
 
-# Deliberately does NOT touch data/ — that is where the user's PDFs and
+# Deliberately does NOT touch data/ - that is where the user's PDFs and
 # corpora live, and a build target must never delete inputs.
 clean:
 	rm -rf build dist .pytest_cache .ruff_cache results

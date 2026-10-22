@@ -3,7 +3,7 @@
 Example-based tests check the cases someone thought of. For a library whose
 entire claim is "the same inputs always produce the same output", that is the
 wrong shape of evidence: the interesting failures are the inputs nobody
-imagined — a title that is only punctuation, an abstract with a lone surrogate,
+imagined - a title that is only punctuation, an abstract with a lone surrogate,
 two records whose scores collide at the ninth decimal.
 
 Hypothesis generates those. Each test below states an invariant that must hold
@@ -191,7 +191,7 @@ def test_embedding_rows_are_independent_of_batch_order(texts):
 def test_exact_search_is_independent_of_insertion_order(ids, random):
     """The property deterministic tie-breaking exists to guarantee.
 
-    Every vector is identical, so every score ties — the hardest case, and the
+    Every vector is identical, so every score ties - the hardest case, and the
     one where insertion order would decide the ranking in a naive index.
     """
     vectors = np.ones((len(ids), 4))

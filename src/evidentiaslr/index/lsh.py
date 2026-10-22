@@ -1,6 +1,6 @@
 """Random-projection LSH index.
 
-Pure numpy, no external service, and — critically — seed-dependent. It exists
+Pure numpy, no external service, and - critically - seed-dependent. It exists
 so that the fidelity and stability experiments can be executed in any
 environment, including CI, without FAISS or a running database. It shares the
 defining property of every production ANN index: the recall it achieves and

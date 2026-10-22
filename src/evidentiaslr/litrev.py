@@ -3,8 +3,8 @@
 EvidentiaSLR plugs into LitRev at the point where its pipeline currently stops.
 LitRev already ingests PDFs into `folder_items`, extracts them through GROBID
 in the `extractor` service and stores TEI in
-`review_source_files.extracted_metadata->tei`. Everything after that — the
-data extraction and synthesis stages — is unimplemented.
+`review_source_files.extracted_metadata->tei`. Everything after that - the
+data extraction and synthesis stages - is unimplemented.
 
 This module reads that existing state and turns it into a canonical corpus,
 so no second extraction pass and no schema change are required to start.

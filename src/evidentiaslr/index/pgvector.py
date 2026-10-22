@@ -3,7 +3,7 @@
 The interesting one, because it can be forced exact: drop the HNSW index and
 let Postgres sequential-scan. That gives an exact reference on realistic
 infrastructure rather than only in memory, which matters for the crossover
-argument — a reviewer can object that in-process brute force is not a fair
+argument - a reviewer can object that in-process brute force is not a fair
 comparison against a deployed database, and this backend answers that.
 """
 

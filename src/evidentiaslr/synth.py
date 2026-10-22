@@ -1,7 +1,7 @@
 """Claim extraction and grounding.
 
 Synthesis Divergence requires a grounding verdict that is itself reproducible.
-A generative model cannot supply one — even at temperature zero, provider-side
+A generative model cannot supply one - even at temperature zero, provider-side
 changes make yesterday's verdict unverifiable today. So grounding is decided
 by a natural language inference model with pinned weights and quantised
 logits, and the fallback, when no NLI model is available, is a transparent

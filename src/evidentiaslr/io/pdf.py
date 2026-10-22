@@ -2,7 +2,7 @@
 
 The entry point for full texts. A PDF becomes a `Record` with IMRaD sections
 via GROBID, which is the same engine LitRev already runs behind its
-`extractor` service — so a corpus built here and a corpus built there are
+`extractor` service - so a corpus built here and a corpus built there are
 interchangeable.
 
 Two things make this reproducible rather than merely convenient:
@@ -20,7 +20,7 @@ arbitrary subset.
 
 A local fallback (`pdftotext` or pypdf) exists for trying the pipeline without
 standing up GROBID. It produces no section structure, so anything that depends
-on `TEISectionChunker` or section filtering will silently degrade — the report
+on `TEISectionChunker` or section filtering will silently degrade - the report
 says so explicitly rather than leaving it to be discovered later.
 """
 

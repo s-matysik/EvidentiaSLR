@@ -2,7 +2,7 @@
 
 The deployment surface: this is what LitRev's queue job talks to, so a
 regression here breaks an integration that has no other test. Exercised
-in-process with FastAPI's TestClient — no server, no network.
+in-process with FastAPI's TestClient - no server, no network.
 """
 
 from __future__ import annotations

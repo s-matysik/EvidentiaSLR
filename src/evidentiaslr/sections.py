@@ -105,7 +105,7 @@ _PATTERNS: tuple[tuple[str, str], ...] = (
     ("structural model", "results"),
     ("model fit", "results"),
     ("path coefficient", "results"),
-    # methods — sampling and participants
+    # methods - sampling and participants
     ("data collection", "methods"),
     ("data gathering", "methods"),
     ("data analysis", "methods"),
@@ -125,7 +125,7 @@ _PATTERNS: tuple[tuple[str, str], ...] = (
     ("research context", "methods"),
     ("research approach", "methods"),
     ("research setting", "methods"),
-    # methods — instruments and psychometrics
+    # methods - instruments and psychometrics
     ("measurement model", "methods"),
     ("measurement", "methods"),
     ("instrument", "methods"),
@@ -143,7 +143,7 @@ _PATTERNS: tuple[tuple[str, str], ...] = (
     ("pilot study", "methods"),
     ("pre-test", "methods"),
     ("pretest", "methods"),
-    # methods — analytical techniques
+    # methods - analytical techniques
     ("partial least squares", "methods"),
     ("structural equation", "methods"),
     ("pls-sem", "methods"),
@@ -271,7 +271,7 @@ def classify_record_sections(
     background", and therefore background. Two inheritance rules recover that:
 
     1. A numbered heading that matched no rule inherits from the nearest
-       preceding heading whose number is its prefix — 2.1 inherits from 2.
+       preceding heading whose number is its prefix - 2.1 inherits from 2.
     2. An unnumbered heading that matched no rule continues the previous
        classified heading, because an unlabelled subsection belongs to the
        section it follows.

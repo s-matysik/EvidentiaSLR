@@ -159,7 +159,7 @@ def cmd_ingest_pdf(args) -> int:
 
 
 def cmd_ingest_tei(args) -> int:
-    """Rebuild a corpus from cached TEI — no PDFs, no GROBID."""
+    """Rebuild a corpus from cached TEI - no PDFs, no GROBID."""
     corpus, report = corpus_from_tei_dir(args.tei_dir, require_sections=args.require_sections)
     print(report.summary())
     corpus.to_jsonl(args.out)
@@ -252,7 +252,7 @@ def _print_evidence(evidence, certificate, corpus, args) -> None:
     print()
 
     if not evidence.chunks:
-        print("no results — check the section filter and the query")
+        print("no results - check the section filter and the query")
         return
 
     for chunk in evidence.chunks:
@@ -322,7 +322,7 @@ def cmd_stability(args) -> int:
 
     stability = evidence_set_stability(runs)
     # A stability number without the pipeline that produced it cannot be
-    # audited or reproduced — in this tool of all tools, the report states
+    # audited or reproduced - in this tool of all tools, the report states
     # exactly what was rebuilt and how many times.
     last = retriever
     payload = {

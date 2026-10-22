@@ -1,8 +1,7 @@
 """Evidence Set Fidelity.
 
 How much of the true top-k does an approximate index return? This is recall,
-but computed on the object that actually reaches synthesis — the evidence set
-— rather than on a document-level relevance judgement. The reference must
+but computed on the object that actually reaches synthesis - the evidence set - rather than on a document-level relevance judgement. The reference must
 come from an exact backend; passing an approximate one silently redefines
 "true".
 """

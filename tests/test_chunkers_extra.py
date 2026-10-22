@@ -3,7 +3,7 @@
 The invariant that matters most here is not any single chunker's output but
 that all of them read the *same* source text. A chunker comparison in which
 the chunkers disagree about what the record says measures the discrepancy,
-not the strategy — and that is a silent failure, so it gets its own test.
+not the strategy - and that is a silent failure, so it gets its own test.
 """
 
 from __future__ import annotations
@@ -31,7 +31,7 @@ from evidentiaslr.metrics.spans import merge_spans, record_agreement
 
 @pytest.fixture
 def sectioned_corpus():
-    """Sections but no flattened body — what GROBID ingestion produces."""
+    """Sections but no flattened body - what GROBID ingestion produces."""
     records = [
         Record.build(
             title=f"Study {i:02d} on design science",
@@ -163,7 +163,7 @@ def test_semantic_chunker_is_reproducible_without_jitter(sectioned_corpus):
 def test_semantic_chunker_boundaries_move_under_perturbation(sectioned_corpus):
     """The claim the chunker axis rests on: a sub-threshold change to the
     embeddings relocates chunk boundaries, so the evidence text itself
-    changes — not merely which pre-cut piece is selected."""
+    changes - not merely which pre-cut piece is selected."""
     embedder = HashEmbedder(dimension=128)
     stable = SemanticChunker(embedder, percentile=85, jitter=0.0, seed=1)
     shaken = SemanticChunker(embedder, percentile=85, jitter=0.05, seed=1)
@@ -300,7 +300,7 @@ def test_semantic_chunker_seed_changes_the_boundaries():
 
 def test_build_chunker_injects_the_pipeline_embedder():
     """Regression: the CLI and the HTTP service each constructed chunkers on
-    their own and forgot that a model-dependent one needs the embedder — the
+    their own and forgot that a model-dependent one needs the embedder - the
     CLI died with a bare TypeError at the prompt, the service with an
     unhandled 500. One factory, one rule."""
     from evidentiaslr.chunking import build_chunker

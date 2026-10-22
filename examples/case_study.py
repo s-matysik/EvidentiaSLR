@@ -59,7 +59,7 @@ def make_retriever(corpus, embedder, chunker_name, section, index):
 
 
 # --------------------------------------------------------------------------
-# demonstration 1 — ingestion coverage
+# demonstration 1 - ingestion coverage
 # --------------------------------------------------------------------------
 
 
@@ -70,8 +70,7 @@ def demo_coverage(corpus: Corpus) -> dict:
     contains scanned PDFs with no text layer, and every RAG tool silently drops
     them. Reporting the gap is the point.
     """
-    # The same classification the chunker uses — with hierarchy inheritance —
-    # not per-heading lookup. Reporting one distribution while retrieving with
+    # The same classification the chunker uses - with hierarchy inheritance - # not per-heading lookup. Reporting one distribution while retrieving with
     # another put two contradictory numbers for one corpus into one artefact.
     from evidentiaslr.sections import classify_record_sections
 
@@ -95,7 +94,7 @@ def demo_coverage(corpus: Corpus) -> dict:
 
 
 # --------------------------------------------------------------------------
-# demonstration 2 — the certificate
+# demonstration 2 - the certificate
 # --------------------------------------------------------------------------
 
 
@@ -140,7 +139,7 @@ def demo_certificate(corpus, embedder, args) -> dict:
 
 
 # --------------------------------------------------------------------------
-# demonstration 3 — section filtering
+# demonstration 3 - section filtering
 # --------------------------------------------------------------------------
 
 
@@ -177,7 +176,7 @@ def demo_section_filter(corpus, embedder, args) -> dict:
 
 
 # --------------------------------------------------------------------------
-# demonstration 4 — latency, and why exact search suffices here
+# demonstration 4 - latency, and why exact search suffices here
 # --------------------------------------------------------------------------
 
 
@@ -216,7 +215,7 @@ def demo_latency(corpus, embedder, args) -> dict:
 
 
 # --------------------------------------------------------------------------
-# demonstration 5 — index instability, with an honest scale caveat
+# demonstration 5 - index instability, with an honest scale caveat
 # --------------------------------------------------------------------------
 
 

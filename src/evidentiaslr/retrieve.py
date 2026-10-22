@@ -1,7 +1,7 @@
 """Retrieval pipeline.
 
 `Retriever` ties a corpus, a chunker, an embedder and an index into one
-object whose output is an `EvidenceSet` — an ordered list of chunks plus
+object whose output is an `EvidenceSet` - an ordered list of chunks plus
 everything needed to reconstruct how they were selected.
 
 Two design decisions carry the reproducibility argument:

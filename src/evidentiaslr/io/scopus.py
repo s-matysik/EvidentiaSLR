@@ -2,7 +2,7 @@
 
 Column names differ between Scopus, WoS and their various export profiles,
 so the mapping is declarative and the loader reports what it could not find
-rather than silently producing empty fields — a corpus that lost its abstracts
+rather than silently producing empty fields - a corpus that lost its abstracts
 to a renamed column is worse than one that failed loudly.
 
 Scopus writes the literal string `[No abstract available]` where an abstract
@@ -229,7 +229,7 @@ def load_scopus_csv(
     `keep_types` filters on the Document Type column, e.g.
     `("Article", "Review", "Conference paper")` to drop book chapters and
     editorials. `require_abstract=True` drops records Scopus exported without
-    one — worth doing before an embedding run, since a title-only record
+    one - worth doing before an embedding run, since a title-only record
     competes on far less text than the rest of the corpus.
 
     Default encoding is `utf-8-sig` because Scopus writes a BOM, which

@@ -95,7 +95,7 @@ def quantise(vectors: np.ndarray, precision: int = DEFAULT_VECTOR_PRECISION) -> 
 
     With a 1e-6 grid and a typical 1e-9 hardware discrepancy, roughly one
     component in a thousand sits close enough to a boundary to flip, and each
-    such flip moves the value by at most 1e-6 — far below the resolution at
+    such flip moves the value by at most 1e-6 - far below the resolution at
     which cosine similarity between distinct passages differs. What remains
     exposed is the exact-tie case, which is why score ties are broken on
     chunk identifier rather than left to the arithmetic.

@@ -58,8 +58,8 @@ def chunker_label(spec) -> str:
 
     Two `semantic` entries differing only in `jitter` are different
     experimental conditions. Labelling both "semantic" merged them in the
-    summary and made the one comparison that matters — the same chunker
-    perturbed — invisible.
+    summary and made the one comparison that matters - the same chunker
+    perturbed - invisible.
     """
     if isinstance(spec, str):
         return spec
@@ -77,7 +77,7 @@ def chunker_label(spec) -> str:
 def load_chunker(spec, embedder):
     """Build a chunker from a name or a {name, params} mapping.
 
-    The semantic chunker needs the embedder injected — which is precisely why
+    The semantic chunker needs the embedder injected - which is precisely why
     it belongs in the grid. It is the one chunker whose output can move
     without any parameter changing.
     """
@@ -184,7 +184,7 @@ def run_cell(handle, sample, embedder, chunker_name, chunker, config, queries, k
     # sentence splitting failed on this text.
     per_record = len(exact.chunks) / len(sample)
     if per_record < 1.5:
-        print(f"[warn] {chunker_name}: {per_record:.1f} chunks per record — "
+        print(f"[warn] {chunker_name}: {per_record:.1f} chunks per record - "
               f"degenerate, comparisons from this cell are not meaningful")
 
     reference: dict[str, list[str]] = {}
